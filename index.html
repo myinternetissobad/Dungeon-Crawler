@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#202b51" />
+    <meta name="description" content="Mosskeep is a playful, repeatable mobile dungeon crawler." />
+    <title>Mosskeep — Pocket Dungeon Crawler</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell" id="appShell">
+      <section class="screen intro-screen is-visible" id="introScreen" aria-labelledby="gameTitle">
+        <div class="intro-copy">
+          <div class="eyebrow"><span class="eyebrow-dot"></span> Pocket dungeon crawler</div>
+          <h1 id="gameTitle">Mosskeep</h1>
+          <p class="intro-lede">A tiny adventure with a big climb. Slash through 50 floors, find your rhythm, and send five bosses packing.</p>
+          <div class="intro-actions">
+            <button class="primary-button" id="startButton" type="button">Start expedition <span>→</span></button>
+            <button class="text-button" id="introCustomizeButton" type="button">Customize controls</button>
+          </div>
+          <div class="intro-library-links">
+            <button class="library-link" id="introMobsButton" type="button"><span>☠</span> Mobs</button>
+            <button class="library-link" id="introDropsButton" type="button"><span>◇</span> Drops</button>
+            <span class="library-hint">Learn what waits below</span>
+          </div>
+          <div class="feature-row" aria-label="Game features">
+            <div class="feature-pill"><span class="feature-icon icon-spark">✦</span><span><strong>50</strong><small>floors</small></span></div>
+            <div class="feature-pill"><span class="feature-icon icon-skull">☠</span><span><strong>5</strong><small>bosses</small></span></div>
+            <div class="feature-pill"><span class="feature-icon icon-repeat">↻</span><span><strong>∞</strong><small>replayable</small></span></div>
+          </div>
+        </div>
+        <div class="intro-visual" aria-hidden="true">
+          <div class="cloud cloud-one"></div>
+          <div class="cloud cloud-two"></div>
+          <div class="sun-disc"></div>
+          <div class="mountain mountain-back"></div>
+          <div class="mountain mountain-front"></div>
+          <div class="hero-spotlight"></div>
+          <div class="hero-figure">
+            <div class="hero-shadow"></div>
+            <div class="hero-cape"></div>
+            <div class="hero-body"></div>
+            <div class="hero-head"><span class="hero-hair"></span><span class="hero-eye eye-left"></span><span class="hero-eye eye-right"></span></div>
+            <div class="hero-arm arm-left"></div><div class="hero-arm arm-right"></div>
+            <div class="hero-sword"></div>
+          </div>
+          <div class="floating-card card-floor"><span class="card-icon">✦</span><span><small>Next up</small><strong>Floor 01</strong></span></div>
+          <div class="floating-card card-streak"><span class="streak-star">★</span><span><small>Best streak</small><strong>Keep climbing!</strong></span></div>
+          <div class="intro-dungeon-door"><div class="door-glow"></div><div class="door-arch"></div><div class="door-path"></div></div>
+        </div>
+        <button class="secret-boss-button" id="secretBossButton" type="button">Fight final boss</button>
+        <div class="intro-footer"><span>Built for one hand</span><span class="footer-spark">✦</span><span>Quick runs, fresh layouts</span></div>
+      </section>
+
+      <section class="screen game-screen" id="gameScreen" aria-label="Mosskeep game">
+        <header class="game-header">
+          <div class="brand-lockup"><span class="brand-mark">✦</span><span>Mosskeep</span></div>
+          <div class="run-info"><span class="run-label">EXPEDITION</span><span class="run-title" id="runTitle">The Mossy Steps</span></div>
+          <div class="header-actions">
+            <button class="header-button" id="inventoryButton" type="button" aria-label="Open inventory">▦ <span>Inventory</span></button>
+            <button class="header-button" id="gameMobsButton" type="button" aria-label="Open mob encyclopedia">☠ <span>Mobs</span></button>
+            <button class="header-button" id="gameDropsButton" type="button" aria-label="Open drops encyclopedia">◇ <span>Drops</span></button>
+            <button class="header-button" id="customizeButton" type="button" aria-label="Customize control layout">⌘ <span>Controls</span></button>
+            <button class="header-button icon-only" id="pauseButton" type="button" aria-label="Pause game">Ⅱ</button>
+          </div>
+        </header>
+
+        <div class="game-layout">
+          <aside class="side-panel left-panel">
+            <div class="panel-label">THE CLIMB</div>
+            <div class="floor-badge"><span class="floor-number" id="floorNumber">01</span><span class="floor-total">/ 50</span></div>
+            <div class="progress-track"><div class="progress-fill" id="floorProgress"></div></div>
+            <p class="floor-caption" id="floorCaption">Clear the room to climb higher.</p>
+            <div class="goal-card"><span class="goal-icon">⌖</span><div><span class="panel-label">CURRENT GOAL</span><strong id="objectiveText">Defeat the critters</strong></div></div>
+            <div class="boss-list" aria-label="Boss milestones">
+              <div class="boss-list-title">BOSS MILESTONES</div>
+              <div class="boss-row" data-boss-row="10"><span class="boss-dot"></span><span>10</span><img class="boss-portrait" src="assets/mobs/cave_spider.png" alt="" /><strong>Cave Spider Queen</strong></div>
+              <div class="boss-row" data-boss-row="20"><span class="boss-dot"></span><span>20</span><img class="boss-portrait" src="assets/mobs/skeleton_king.png" alt="" /><strong>Skeleton King</strong></div>
+              <div class="boss-row" data-boss-row="30"><span class="boss-dot"></span><span>30</span><img class="boss-portrait" src="assets/mobs/stone_golem.png" alt="" /><strong>Stone Golem</strong></div>
+              <div class="boss-row" data-boss-row="40"><span class="boss-dot"></span><span>40</span><img class="boss-portrait" src="assets/mobs/dragon_guardian.png" alt="" /><strong>Fire Dragon</strong></div>
+              <div class="boss-row" data-boss-row="50"><span class="boss-dot"></span><span>50</span><img class="boss-portrait" src="assets/mobs/void_lord.png" alt="" /><strong>Void Lord</strong></div>
+            </div>
+          </aside>
+
+          <section class="game-stage" id="gameStage">
+            <canvas id="gameCanvas" width="900" height="560" aria-label="Dungeon arena"></canvas>
+            <div class="stage-vignette"></div>
+            <div class="stage-topline"><span class="floor-chip" id="floorChip">FLOOR 01</span><span class="arena-tip" id="arenaTip">Explore every corner</span></div>
+            <div class="boss-hud" id="bossHud" aria-live="polite">
+              <div class="boss-hud-heading">
+                <img class="boss-hud-portrait" id="bossHudPortrait" src="assets/mobs/cave_spider.png" alt="" />
+                <div><span class="boss-hud-kicker">BOSS ENCOUNTER</span><strong id="bossHudName">Cave Spider Queen</strong><span class="boss-hud-phase" id="bossHudPhase">PHASE 1 · HUNT</span></div>
+                <span class="boss-hud-hp" id="bossHudHp">500 / 500</span>
+              </div>
+              <div class="boss-health-track"><div class="boss-health-fill" id="bossHealthFill"></div></div>
+            </div>
+            <div class="health-hud">
+              <div class="health-label"><span>VITA</span><span id="healthText">100 / 100</span></div>
+              <div class="health-track"><div class="health-fill" id="healthFill"></div></div>
+            </div>
+            <div class="control control-joystick" id="joystick" data-control="joystick" aria-label="Movement joystick" role="application">
+              <div class="joystick-ring"><div class="joystick-knob" id="joystickKnob"></div></div>
+              <span class="control-edit-label">MOVE</span>
+            </div>
+            <div class="control control-hit" id="hitControl" data-control="hit">
+              <button class="action-button hit-button" id="hitButton" type="button" aria-label="Hit nearby enemies"><span class="action-symbol">✦</span><span>HIT</span></button>
+            </div>
+            <div class="control control-special" id="specialControl" data-control="special">
+              <button class="action-button special-button" id="specialButton" type="button" aria-label="Use special ability"><span class="action-symbol">◈</span><span>BURST</span><small id="specialCooldown">READY</small></button>
+            </div>
+            <div class="edit-hint" id="editHint"><span>↕</span> Drag any control to move it <button id="doneEditingButton" type="button">Done</button></div>
+          </section>
+
+          <aside class="side-panel right-panel">
+            <div class="panel-label">RUN NOTES</div>
+            <div class="stat-card"><span class="stat-icon icon-token">◆</span><div><span class="panel-label">SHARDS</span><strong id="shardCount">0</strong></div></div>
+            <div class="stat-card"><span class="stat-icon icon-sword">✦</span><div><span class="panel-label">DEFEATED</span><strong id="defeatedCount">0</strong></div></div>
+            <div class="tip-card"><span class="tip-mark">“</span><p id="tipText">Stay light on your feet. The dark spots are usually the interesting ones.</p><span class="tip-author">— Mosskeep field guide</span></div>
+            <div class="control-legend"><div><span class="legend-dot move-dot"></span> Move</div><div><span class="legend-dot hit-dot"></span> Hit</div><div><span class="legend-dot burst-dot"></span> Burst</div></div>
+          </aside>
+        </div>
+      </section>
+
+      <div class="modal-layer" id="floorModal" aria-hidden="true">
+        <div class="modal-card floor-modal-card">
+          <div class="modal-kicker" id="floorModalKicker">FLOOR CLEARED</div>
+          <div class="modal-emblem">✦</div>
+          <h2 id="floorModalTitle">A quiet room.</h2>
+          <p id="floorModalCopy">The stairs are awake. Something bigger is waiting above.</p>
+          <button class="primary-button" id="continueButton" type="button">Climb to floor 02 <span>↑</span></button>
+        </div>
+      </div>
+
+      <div class="modal-layer" id="pauseModal" aria-hidden="true">
+        <div class="modal-card pause-modal-card">
+          <div class="modal-kicker">EXPEDITION PAUSED</div>
+          <div class="pause-mark">Ⅱ</div>
+          <h2>Take a breath.</h2>
+          <p>Your run is safe. The dungeon will wait right here.</p>
+          <button class="primary-button" id="resumeButton" type="button">Back to the room <span>→</span></button>
+          <button class="text-button" id="restartButton" type="button">Start a new run</button>
+        </div>
+      </div>
+
+      <div class="modal-layer" id="customizeModal" aria-hidden="true">
+        <div class="modal-card customize-card">
+          <button class="close-button" id="closeCustomizeButton" type="button" aria-label="Close controls dialog">×</button>
+          <div class="modal-kicker">YOUR LAYOUT</div>
+          <h2>Make it yours.</h2>
+          <p>Place the controls wherever your thumbs feel happiest. You can also drag them directly on the dungeon screen.</p>
+          <div class="control-preview"><span class="preview-joystick"></span><span class="preview-hit">✦</span><span class="preview-burst">◈</span></div>
+          <button class="primary-button" id="editLayoutButton" type="button">Drag controls <span>↕</span></button>
+          <button class="text-button" id="resetLayoutButton" type="button">Reset layout</button>
+        </div>
+      </div>
+
+      <div class="modal-layer" id="inventoryModal" aria-hidden="true">
+        <div class="inventory-shell">
+          <div class="inventory-header">
+            <div><div class="modal-kicker">CAMP PACK</div><h2>Inventory</h2><p id="inventoryCapacity">0 items stored · Unlimited storage</p></div>
+            <div class="inventory-header-actions"><button class="header-button" id="sortInventoryButton" type="button">Sort</button><button class="close-button" id="closeInventoryButton" type="button" aria-label="Close inventory">×</button></div>
+          </div>
+          <div class="inventory-layout">
+            <section class="equipment-panel">
+              <div class="panel-label">EQUIPMENT</div>
+              <div class="equipment-content">
+                <div class="equipment-slots">
+                  <div class="equipment-slot" data-equip-slot="helmet"><span class="equip-slot-empty">Helmet</span></div>
+                  <div class="equipment-slot" data-equip-slot="chestplate"><span class="equip-slot-empty">Chestplate</span></div>
+                  <div class="equipment-slot" data-equip-slot="leggings"><span class="equip-slot-empty">Leggings</span></div>
+                  <div class="equipment-slot" data-equip-slot="boots"><span class="equip-slot-empty">Boots</span></div>
+                  <div class="equipment-slot weapon-slot" data-equip-slot="weapon"><span class="equip-slot-empty">Weapon</span></div>
+                </div>
+                <div class="inventory-character-preview"><div class="preview-aura"></div><div class="preview-hero">M</div><span>YOUR RUNNER</span></div>
+              </div>
+              <div class="player-stats" id="playerStats"></div>
+            </section>
+            <section class="pack-panel">
+              <div class="pack-heading"><div><div class="panel-label">BACKPACK</div><strong>Unlimited storage</strong></div><span class="pack-tip">Drag to equip · double-click to wear</span></div>
+              <div class="inventory-grid" id="inventoryGrid" aria-label="Inventory slots"></div>
+              <div class="inventory-tooltip" id="inventoryTooltip" aria-live="polite"><span class="tooltip-empty">Select an item to inspect it.</span></div>
+            </section>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-layer" id="codexModal" aria-hidden="true">
+        <div class="codex-shell">
+          <div class="codex-header">
+            <div><div class="modal-kicker">FIELD GUIDE</div><h2 id="codexTitle">Mob Encyclopedia</h2><p id="codexSubtitle">Study the things that move in the dark.</p></div>
+            <button class="close-button" id="closeCodexButton" type="button" aria-label="Close encyclopedia">×</button>
+          </div>
+          <div class="codex-toolbar">
+            <div class="codex-tabs"><button class="codex-tab is-active" data-codex-tab="mobs" type="button">Mobs</button><button class="codex-tab" data-codex-tab="drops" type="button">Drops</button></div>
+            <input id="codexSearch" class="codex-search" type="search" placeholder="Search the guide..." aria-label="Search encyclopedia" />
+            <select id="codexFilter" class="codex-filter" aria-label="Filter encyclopedia"><option value="all">All tiers</option><option value="Beginner">Beginner</option><option value="Intermediate">Intermediate</option><option value="Advanced">Advanced</option><option value="Elite">Elite</option><option value="Boss">Bosses</option></select>
+          </div>
+          <div class="codex-progress" id="codexProgress"></div>
+          <div class="codex-layout"><div class="codex-grid" id="codexGrid"></div><aside class="codex-details" id="codexDetails"><div class="codex-empty">Select an entry to learn more.</div></aside></div>
+        </div>
+      </div>
+
+      <div class="modal-layer" id="runEndModal" aria-hidden="true">
+        <div class="run-summary-card">
+          <div class="modal-kicker" id="runEndKicker">RUN COMPLETE</div>
+          <div class="run-summary-mark" id="runEndMark">PEAK MOMENT</div>
+          <h2 id="runEndTitle">That run still counts.</h2>
+          <p class="run-summary-copy" id="runEndCopy">The dungeon stopped you, but the time you spent is saved below. Your next run starts here.</p>
+          <div class="peak-card">
+            <span class="panel-label">YOUR PEAK</span>
+            <strong id="runBestMoment">You entered the dungeon.</strong>
+          </div>
+          <div class="run-summary-grid" id="runHighlights"></div>
+          <div class="personal-best-banner" id="runPersonalBest"></div>
+          <button class="primary-button run-again-button" id="runAgainButton" type="button">Try again <span>↻</span></button>
+        </div>
+      </div>
+
+      <div class="toast" id="toast" role="status" aria-live="polite"><span class="toast-icon">✦</span><span id="toastText">Ready when you are.</span></div>
+    </main>
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
